@@ -1,22 +1,40 @@
-class Solution(object):
+'''
+1. Understand
+- Inputs a list of ints
+- Outputs a list
+- Remove duplicates from an array
+- Possible edge cases:
+    - Empty list
+    - No duplicates
+
+2. Plan
+- Create a function
+- Create a new dictionary called count, to keep track of the numbers
+- Create a new variable named "newList" which keeps track of the updated list
+- Create a new variable named "length" which is the length of the list
+- Create a for loop to iterate through the loop via for each:
+    - If the number is in the dictionary, update the value to two
+    - Else: Update the dictionary to create a new key and set it equal to 1
+- Create a for loop to iterate through the dictionary, and add each key to the new list
+- Return the new list
+
+3. Implement
+'''
+
+class Solution:
     def removeDuplicates(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+        pointer1 = 0
+        pointer2 = 1
 
-        count = {}
-
-        for i in range(len(nums)):
-            if nums[i] in count:
-                count.update({nums[i] : count.get(nums[i]) + 1 })
+        for i in range(len(nums)-1):
+            if(pointer2 != len(nums)):
+                if(nums[pointer1] == nums[pointer2]):
+                    nums.remove(nums[pointer2])
+                    continue
+                else:
+                    pointer1 += 1
+                    pointer2 += 1
             else:
-                count.update({nums[i] : 1})
-        
-        for key in count:
-            while(count.get(key) > 1):
-                nums.remove(key)
-                count.update({key : count.get(key) - 1})
+                break
 
-        # return nums
-        
+        print(nums)
