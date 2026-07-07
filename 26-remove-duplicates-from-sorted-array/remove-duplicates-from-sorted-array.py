@@ -29,7 +29,8 @@ class Solution:
         for i in range(len(nums)-1):
             if(pointer2 != len(nums)):
                 if(nums[pointer1] == nums[pointer2]):
-                    nums.remove(nums[pointer2])
+                    nums.pop(pointer2)
+                    
                     continue
                 else:
                     pointer1 += 1
